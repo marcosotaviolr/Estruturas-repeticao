@@ -64,7 +64,6 @@ public class Main {
             System.out.println("Deseja continuar? (1: sim / 2: não)");
             programaAtivo = scanner.nextInt();
         }
-        scanner.close();
     }
 
     private static void Algoritmo02() {
@@ -82,58 +81,39 @@ public class Main {
         // Verifica o empregado mais antigo e mais recente em uma firma
         Scanner scanner = new Scanner(System.in);
         final int NUMERO_MAXIMO_INFORMACOES = 300;
-        int maisRecenteMeses;
-        int maisAntigoMeses;
-        int empregadoMaisRecente;
-        int empregadoMaisAntigo;
+        int maisRecenteMeses = Integer.MAX_VALUE;
+        int maisAntigoMeses = Integer.MIN_VALUE;
+        int empregadoMaisRecente = 0;
+        int empregadoMaisAntigo = 0;
 
-        System.out.println("Informe o número do empregado (Informe 0 nos dois para terminar): ");
-        int numeroEmpregado = scanner.nextInt();
-        System.out.println("Informe a quantidade de meses na firma (Informe 0 nos dois para terminar): ");
-        int quantidadeMeses = scanner.nextInt();
-        if (numeroEmpregado == 0 && quantidadeMeses == 0) {
-            scanner.close();
-            return;
-        }
-
-        maisAntigoMeses = quantidadeMeses;
-        maisRecenteMeses = quantidadeMeses;
-        empregadoMaisRecente = numeroEmpregado;
-        empregadoMaisAntigo = numeroEmpregado;
-
-        for (int i = 1; i < NUMERO_MAXIMO_INFORMACOES; i++) {
-            // Começa em 1 pois um registro já foi lido
+        for (int i = 0; i < NUMERO_MAXIMO_INFORMACOES; i++) {
             System.out.println("Informe o número do empregado (Informe 0 nos dois para terminar): ");
-            numeroEmpregado = scanner.nextInt();
+            int numeroEmpregado = scanner.nextInt();
             System.out.println("Informe a quantidade de meses na firma (Informe 0 nos dois para terminar): ");
-            quantidadeMeses = scanner.nextInt();
+            int quantidadeMeses = scanner.nextInt();
 
             if (numeroEmpregado == 0 && quantidadeMeses == 0) {
                 break;
             }
-
-            if (maisAntigoMeses < quantidadeMeses) {
+            if (quantidadeMeses > maisAntigoMeses) {
                 maisAntigoMeses = quantidadeMeses;
                 empregadoMaisAntigo = numeroEmpregado;
             }
-            if (maisRecenteMeses > quantidadeMeses) {
+            if (quantidadeMeses < maisRecenteMeses) {
                 maisRecenteMeses = quantidadeMeses;
                 empregadoMaisRecente = numeroEmpregado;
             }
         }
-
-        System.out.println("O empregado mais recente é o " + empregadoMaisRecente + " com " + maisRecenteMeses + " meses.");
-        System.out.println("O empregado mais antigo é o " + empregadoMaisAntigo + " com " + maisAntigoMeses + " meses.");
-        scanner.close();
+            System.out.println("O empregado mais recente é o " + empregadoMaisRecente + " com " + maisRecenteMeses + " meses.");
+            System.out.println("O empregado mais antigo é o " + empregadoMaisAntigo + " com " + maisAntigoMeses + " meses.");
     }
 
     private static void Algoritmo04() {
         // Mostra a menor altura do grupo, a média de altura das mulheres, o número de homens e o sexo da pessoa mais alta
         Scanner scanner = new Scanner(System.in);
         final int NUMERO_PESSOAS = 15;
-
-        double menorAltura = 999.0;
-        double maiorAltura = 0;
+        double menorAltura = Double.MAX_VALUE;
+        double maiorAltura = Double.MIN_VALUE;
         double somaAlturaMulheres = 0;
         int numeroMulheres = 0;
         int numeroHomens = 0;
@@ -169,7 +149,6 @@ public class Main {
         }
         System.out.println("Número de homens: " + numeroHomens);
         System.out.println("Sexo da pessoa mais alta: " + sexoMaisAlta);
-        scanner.close();
     }
 
     private static void Algoritmo05() {
@@ -219,7 +198,6 @@ public class Main {
         } else {
             System.out.println("Nenhum dado informado");
         }
-        scanner.close();
     }
 
     private static void Algoritmo06() {
@@ -260,7 +238,6 @@ public class Main {
         System.out.println("Quantidade negativos: " + valoresNegativos);
         System.out.println("Percentual negativos: " + percentualNegativos + "%");
         System.out.println("Percentual positivos: " + percentualPositivos + "%");
-        scanner.close();
     }
 
     private static void Algoritmo07() {
@@ -280,7 +257,6 @@ public class Main {
 
         System.out.println("Foram lidos " + QUANTIDADE_VALORES + " valores");
         System.out.println("A média dos valores é: " + mediaValores);
-        scanner.close();
     }
 
     private static void Algoritmo08() {
@@ -288,8 +264,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         final int QUANTIDADE_AMIGOS = 15;
 
-        double maiorAltura = 0;
-        double menorAltura = 999;
+        double maiorAltura = Double.MIN_VALUE;
+        double menorAltura = Double.MAX_VALUE;
         double somaAlturaMulheres = 0;
         double somaAlturaHomens = 0;
         double somaAlturaTotal = 0;
@@ -342,7 +318,6 @@ public class Main {
             System.out.println("Média da altura dos homens: " + mediaAlturaHomens + " metros");
         }
         System.out.println("Média da altura da turma: " + mediaAlturaTotal + " metros");
-        scanner.close();
     }
 
     private static void Algoritmo09() {
@@ -375,7 +350,6 @@ public class Main {
         } else {
             System.out.println("Nenhum aluno informado");
         }
-        scanner.close();
     }
 
     private static void Algoritmo10() {
@@ -408,7 +382,6 @@ public class Main {
             }
         }
         System.out.println("A soma dos números pares é: " + soma);
-        scanner.close();
     }
 
     private static void Algoritmo12() {
@@ -442,6 +415,5 @@ public class Main {
         System.out.println("Matrícula do aluno com a maior nota: " + matriculaMaiorNota);
         System.out.println("Segunda maior nota: " + segundaMaiorNota);
         System.out.println("Matrícula do aluno com a segunda maior nota: " + matriculaSegundaMaiorNota);
-        scanner.close();
     }
 }
